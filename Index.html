@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Mansi ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  overflow-x: hidden;
+  color: white;
+  text-align: center;
+}
+
+/* Floating Hearts */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  font-size: 20px;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+}
+
+.hero img {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+}
+
+/* Container */
+.container {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Cards */
+.card {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 25px;
+  margin: 25px 0;
+  animation: fadeUp 1s ease;
+}
+
+@keyframes fadeUp {
+  from {opacity:0; transform: translateY(30px);}
+  to {opacity:1; transform: translateY(0);}
+}
+
+/* Typewriter */
+#typewriter {
+  font-size: 1.2rem;
+  min-height: 50px;
+}
+
+/* Button */
+.btn {
+  background: white;
+  color: #ff5e78;
+  padding: 12px 22px;
+  border-radius: 25px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #ff5e78;
+  color: white;
+}
+
+/* Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Hidden Button */
+.hidden-btn {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+}
+
+/* Surprise */
+#surprise {
+  display: none;
+  animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .hero img {
+    height: 60vh;
+  }
+  .hero-text h1 {
+    font-size: 1.8rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO IMAGE -->
+<div class="hero">
+  <img src="images/5.jpg">
+  <div class="hero-text">
+    <h1>Happy Birthday Mansi ❤️</h1>
+    <p id="typewriter"></p>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Button -->
+  <button class="btn" onclick="scrollToGallery()">See Our Memories 📸</button>
+
+  <!-- Gallery -->
+  <div id="gallery" class="card">
+    <h1>Our Moments 📸</h1>
+    <div class="gallery">
+      <img src="images/1.jpg">
+      <img src="images/2.jpg">
+      <img src="images/3.jpg">
+      <img src="images/4.jpg">
+      <img src="images/6.jpg">
+      <img src="images/9.jpg">
+      <img src="images/8.jpg">
+      <img src="images/7.jpg">
+    </div>
+  </div>
+
+  <!-- Letters -->
+  <div class="card">
+    <h1>For You 💌</h1>
+    <p>
+      Mansi, you didn’t just enter my life… you changed it completely.  
+      Every day with you feels lighter, happier, and more meaningful.
+    </p>
+    <p>
+      You are not just someone I love. You are someone I never want to lose ❤️
+    </p>
+  </div>
+
+  <!-- Surprise -->
+  <div id="surprise" class="card">
+    <h1>🎁 Just for You</h1>
+    <p style="font-size:1.3rem;">
+      I would choose you again and again, in every lifetime ❤️
+    </p>
+  </div>
+
+</div>
+
+<button class="hidden-btn" onclick="showSurprise()"></button>
+
+<script>
+
+/* Typewriter */
+const text = "You are my peace, my happiness, my everything... ❤️";
+let i = 0;
+
+function typeWriter() {
+  if (i < text.length) {
+    document.getElementById("typewriter").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, 40);
+  }
+}
+typeWriter();
+
+/* Scroll */
+function scrollToGallery() {
+  document.getElementById("gallery").scrollIntoView({behavior: "smooth"});
+}
+
+/* Surprise */
+function showSurprise() {
+  document.getElementById("surprise").style.display = "block";
+}
+
+/* Hearts */
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 6000);
+}
+setInterval(createHeart, 400);
+
+</script>
+</body>
+</html>
